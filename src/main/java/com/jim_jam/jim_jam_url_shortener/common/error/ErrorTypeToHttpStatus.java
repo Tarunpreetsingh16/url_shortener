@@ -15,6 +15,7 @@ public class ErrorTypeToHttpStatus {
     private static final Map<String, HttpStatus> map = new HashMap<>();
 
     static {
+        map.put(ErrorType.KEY_NOT_FOUND.getErrorDetail().getTitleKey(), HttpStatus.NOT_FOUND);
     }
 
     /**

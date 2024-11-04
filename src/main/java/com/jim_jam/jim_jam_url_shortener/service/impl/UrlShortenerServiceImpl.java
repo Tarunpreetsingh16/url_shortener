@@ -57,4 +57,18 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
 
         return shortUrl;
     }
+
+    @Override
+    public String getActualUrl(String shortUrlId) throws UrlShortenerServiceException {
+        ShortUrl shortUrl = shortUrlService.findActualUrl(shortUrlId);
+
+        if (shortUrl == null) {
+            ErrorDetail errorDetail = ErrorType.KEY_NOT_FOUND.getErrorDetail();
+            log.error("Short url not found for id={}", shortUrlId);
+            throw new UrlShortenerServiceException(
+                    errorDetail,
+                    ErrorTypeToHttpStatus.getHttpStatus(errorDetail.getTitleKey()));
+        }
+        return shortUrl.getActualUrl();
+    }
 }

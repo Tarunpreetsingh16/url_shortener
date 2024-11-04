@@ -5,4 +5,5 @@ import com.jim_jam.jim_jam_url_shortener.models.GetShortUrlRequest;
 
 public interface IUrlShortenerService {
     String getShortUrl(GetShortUrlRequest shortUrlRequestBody) throws UrlShortenerServiceException;
+    String getActualUrl(String shortUrlId) throws UrlShortenerServiceException;
 }

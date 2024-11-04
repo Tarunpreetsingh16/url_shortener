@@ -13,6 +13,11 @@ public enum ErrorType {
             "Key Generation Service Error",
             "key.generation.service.error",
             "Something went wrong."
+    ),
+    KEY_NOT_FOUND(
+            "Key Not Found",
+            "key.not.found.error",
+            ""
     );
 
     private final String title;

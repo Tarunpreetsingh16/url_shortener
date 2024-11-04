@@ -5,6 +5,8 @@ import com.jim_jam.jim_jam_url_shortener.repositories.ShortUrlRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class ShortUrlService {
@@ -19,5 +21,10 @@ public class ShortUrlService {
 
     public void saveShortUrl(ShortUrl shortUrl) {
         shortUrlRepository.save(shortUrl);
+    }
+
+    public ShortUrl findActualUrl(String shortUrlId) {
+        Optional<ShortUrl> shortUrl = shortUrlRepository.findById(shortUrlId);
+        return shortUrl.orElse(null);
     }
 }
