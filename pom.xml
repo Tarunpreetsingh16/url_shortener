@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jim_jam</groupId>
-	<artifactId>jim-jam-url-shortener</artifactId>
+	<artifactId>jim-jam-url-shortener-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jim-jam-url-shortener</name>
 	<description>URL shortener service</description>

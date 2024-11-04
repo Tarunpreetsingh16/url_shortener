@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
  * Custom exception class for the service
  */
 @Getter
-public class KeyGenerationServiceException extends Exception{
+public class UrlShortenerServiceException extends Exception{
     ErrorDetail errorDetail;
     HttpStatus httpStatus;
 
@@ -16,7 +16,7 @@ public class KeyGenerationServiceException extends Exception{
      * @param errorDetail detail of an error
      * @param httpStatus {@link HttpStatus}
      */
-    public KeyGenerationServiceException(ErrorDetail errorDetail, HttpStatus httpStatus) {
+    public UrlShortenerServiceException(ErrorDetail errorDetail, HttpStatus httpStatus) {
         super(errorDetail.getTitleKey());
         this.errorDetail = errorDetail;
         this.httpStatus = httpStatus;

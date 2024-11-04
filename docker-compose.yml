@@ -1,10 +1,19 @@
 version: '3.8'
 
 services:
-  key-generation-service:
+  jim-jam-url-shortener-service:
     build: .
     ports:
-      - "8080:8080"
+      - "8081:8080"
+    environment:
+      - KEY_GENERATION_SERVICE_URL=key-generation-service
+      - DOMAIN=http://localhost:8081
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/mappedKeys
+    depends_on:
+      - key-generation-service
+
+  key-generation-service:
+    image: key-generation-service:latest
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/keys
     depends_on:

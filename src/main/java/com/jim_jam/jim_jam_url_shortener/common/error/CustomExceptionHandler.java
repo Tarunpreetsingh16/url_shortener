@@ -14,14 +14,14 @@ import org.springframework.web.context.request.WebRequest;
 public class CustomExceptionHandler {
 
     /**
-     * Method to handle custom service error, {@link KeyGenerationServiceException}
-     * @param ex {@link KeyGenerationServiceException}
+     * Method to handle custom service error, {@link UrlShortenerServiceException}
+     * @param ex {@link UrlShortenerServiceException}
      * @param request request for which the exception occurred
      * @return {@link ResponseEntity}
      */
-    @ExceptionHandler(KeyGenerationServiceException.class)
+    @ExceptionHandler(UrlShortenerServiceException.class)
     public ResponseEntity<ErrorResponse> handleKeyGenerationServiceException(
-            KeyGenerationServiceException ex,
+            UrlShortenerServiceException ex,
             WebRequest request
     ) {
         log.error("Error occurred={}", ex.errorDetail);

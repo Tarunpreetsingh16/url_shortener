@@ -1,0 +1,17 @@
+meta {
+  name: getShortUrl
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url_shortener_url}}/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "actualUrl": "https://www.facebook.com"
+  }
+}

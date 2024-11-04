@@ -5,6 +5,11 @@ package com.jim_jam.jim_jam_url_shortener.common.error;
  */
 public enum ErrorType {
     URL_SHORTENER_SERVICE_ERROR(
+            "URL Shortener Service Error",
+            "url.shortener.service.error",
+            "Something went wrong."
+    ),
+    KEY_GENERATION_SERVICE_ERROR(
             "Key Generation Service Error",
             "key.generation.service.error",
             "Something went wrong."
