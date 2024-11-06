@@ -24,21 +24,25 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
     private final IKeyGenerationService keyGenerationService;
     private final String domain;
     private final ShortUrlService shortUrlService;
+    private final ActualUrlProvider actualUrlProvider;
 
     /**
      * Primary constructor to set up the bean
      * @param keyGenerationService service layer bean to interact with key generation service
      * @param shortUrlService service layer of this microservice
+     * @param actualUrlProvider bean to provide url
      * @param domain hostname of the current microservice
      */
     public UrlShortenerServiceImpl(
             IKeyGenerationService keyGenerationService,
             ShortUrlService shortUrlService,
+            ActualUrlProvider actualUrlProvider,
             @Value("${domain}") String domain
     ) {
         this.keyGenerationService = keyGenerationService;
         this.domain = domain;
         this.shortUrlService = shortUrlService;
+        this.actualUrlProvider = actualUrlProvider;
     }
 
     @Override
@@ -71,7 +75,7 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
 
     @Override
     public String getActualUrl(String shortUrlId) throws UrlShortenerServiceException {
-        ShortUrl shortUrl = shortUrlService.findActualUrl(shortUrlId);
+        ShortUrl shortUrl = actualUrlProvider.getActualUrl(shortUrlId);
 
         if (shortUrl == null) {
             ErrorDetail errorDetail = ErrorType.KEY_NOT_FOUND.getErrorDetail();
