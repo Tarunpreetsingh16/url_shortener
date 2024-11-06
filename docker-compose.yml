@@ -6,7 +6,7 @@ services:
     ports:
       - "8081:8080"
     environment:
-      - KEY_GENERATION_SERVICE_URL=key-generation-service
+      - KEY_GENERATION_SERVICE_URL=http://key-generation-service:8080
       - DOMAIN=http://localhost:8081
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/mappedKeys
     depends_on:
@@ -14,6 +14,8 @@ services:
 
   key-generation-service:
     image: key-generation-service:latest
+    ports:
+      - "8080:8080"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/keys
     depends_on:

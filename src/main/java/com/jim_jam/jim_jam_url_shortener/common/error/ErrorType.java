@@ -13,6 +13,16 @@ public enum ErrorType {
             "Key Generation Service Error",
             "key.generation.service.error",
             "Something went wrong."
+    ),
+    NORMALIZING_URL_ERROR(
+            "Normalizing Url Error",
+            "normalizing.url.error",
+            "Failed to normalize the url."
+    ),
+    INVALID_URL_ERROR(
+            "Invalid Url Error",
+            "invalid.url.error",
+            "Invalid Url."
     );
 
     private final String title;

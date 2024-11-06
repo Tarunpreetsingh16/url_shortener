@@ -39,7 +39,7 @@ public class CustomExceptionHandler {
             Exception ex,
             WebRequest request
     ) {
-        log.error("Something went wrong={}", ex.getLocalizedMessage());
+        log.error("Something went wrong={}", ex.getLocalizedMessage(), ex);
         return getGeneralError();
     }
 
