@@ -14,6 +14,16 @@ public enum ErrorType {
             "key.generation.service.error",
             "Something went wrong."
     ),
+    NORMALIZING_URL_ERROR(
+            "Normalizing Url Error",
+            "normalizing.url.error",
+            "Failed to normalize the url."
+    ),
+    INVALID_URL_ERROR(
+            "Invalid Url Error",
+            "invalid.url.error",
+            "Invalid Url."
+    ),
     KEY_NOT_FOUND(
             "Key Not Found",
             "key.not.found.error",

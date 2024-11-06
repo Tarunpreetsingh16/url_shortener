@@ -1,7 +1,7 @@
 package com.jim_jam.jim_jam_url_shortener.controller;
 
-import com.jim_jam.jim_jam_url_shortener.common.error.ErrorResponse;
-import com.jim_jam.jim_jam_url_shortener.common.error.UrlShortenerServiceException;
+import com.jim_jam.jim_jam_url_shortener.common.error.*;
+import com.jim_jam.jim_jam_url_shortener.helpers.UrlHelper;
 import com.jim_jam.jim_jam_url_shortener.models.GetShortUrlRequest;
 import com.jim_jam.jim_jam_url_shortener.models.GetShortUrlResponse;
 import com.jim_jam.jim_jam_url_shortener.service.IUrlShortenerService;
@@ -53,6 +53,13 @@ public class UrlShortenerController {
     public ResponseEntity<GetShortUrlResponse> getShortUrl(
             @RequestBody GetShortUrlRequest shortUrlRequestBody
     ) throws UrlShortenerServiceException {
+        if (!UrlHelper.isValidUrl(shortUrlRequestBody.getActualUrl())) {
+            ErrorDetail errorDetail = ErrorType.INVALID_URL_ERROR.getErrorDetail();
+            throw new UrlShortenerServiceException(
+                    errorDetail,
+                    ErrorTypeToHttpStatus.getHttpStatus(errorDetail.getTitleKey()));
+        }
+
         String key = urlShortenerService.getShortUrl(shortUrlRequestBody);
         return ResponseEntity.ok().body(
                 GetShortUrlResponse.builder()

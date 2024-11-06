@@ -5,6 +5,7 @@ import com.jim_jam.jim_jam_url_shortener.common.error.ErrorType;
 import com.jim_jam.jim_jam_url_shortener.common.error.ErrorTypeToHttpStatus;
 import com.jim_jam.jim_jam_url_shortener.common.error.UrlShortenerServiceException;
 import com.jim_jam.jim_jam_url_shortener.data.ShortUrl;
+import com.jim_jam.jim_jam_url_shortener.helpers.UrlHelper;
 import com.jim_jam.jim_jam_url_shortener.models.GetKeyResponse;
 import com.jim_jam.jim_jam_url_shortener.models.GetShortUrlRequest;
 import com.jim_jam.jim_jam_url_shortener.service.IKeyGenerationService;
@@ -13,6 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+/**
+ * Concrete implementation of {@link IUrlShortenerService}
+ */
 @Service
 @Slf4j
 public class UrlShortenerServiceImpl implements IUrlShortenerService {
@@ -21,6 +25,12 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
     private final String domain;
     private final ShortUrlService shortUrlService;
 
+    /**
+     * Primary constructor to set up the bean
+     * @param keyGenerationService service layer bean to interact with key generation service
+     * @param shortUrlService service layer of this microservice
+     * @param domain hostname of the current microservice
+     */
     public UrlShortenerServiceImpl(
             IKeyGenerationService keyGenerationService,
             ShortUrlService shortUrlService,
@@ -44,6 +54,7 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
         }
         String key = keyResponseBody.getKey();
         String actualUrl = shortUrlRequestBody.getActualUrl();
+        String cleanedActualUrl = UrlHelper.getCleanedUrl(actualUrl);
 
         String shortUrl = domain.concat("/").concat(key);
         log.info("Successfully generated short url with id={} for actual url={}",
@@ -52,7 +63,7 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
         shortUrlService.saveShortUrl(
                 ShortUrl.builder()
                         .id(key)
-                        .actualUrl(actualUrl)
+                        .actualUrl(cleanedActualUrl)
                         .build());
 
         return shortUrl;
