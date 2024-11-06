@@ -80,6 +80,8 @@ public class UrlShortenerServiceImpl implements IUrlShortenerService {
                     errorDetail,
                     ErrorTypeToHttpStatus.getHttpStatus(errorDetail.getTitleKey()));
         }
-        return shortUrl.getActualUrl();
+        String decodedUrl = UrlHelper.decodeUrl(shortUrl.getActualUrl());
+        log.info("Decoded url={} for key={}", decodedUrl, shortUrlId);
+        return decodedUrl;
     }
 }
