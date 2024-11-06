@@ -7,6 +7,7 @@ import com.jim_jam.jim_jam_url_shortener.common.error.UrlShortenerServiceExcepti
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
@@ -64,6 +65,15 @@ public class UrlHelper {
      */
     private static String encodeUrl(String url) {
         return URLEncoder.encode(url, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Method to decode an url with UTF_8
+     * @param url to be decoded
+     * @return {@link String} decoded url
+     */
+    public static String decodeUrl(String url) {
+        return URLDecoder.decode(url, StandardCharsets.UTF_8);
     }
 
     /**

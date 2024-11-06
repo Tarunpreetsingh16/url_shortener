@@ -23,6 +23,11 @@ public enum ErrorType {
             "Invalid Url Error",
             "invalid.url.error",
             "Invalid Url."
+    ),
+    KEY_NOT_FOUND(
+            "Key Not Found",
+            "key.not.found.error",
+            ""
     );
 
     private final String title;

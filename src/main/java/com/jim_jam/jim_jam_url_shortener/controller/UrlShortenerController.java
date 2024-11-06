@@ -11,10 +11,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 public class UrlShortenerController {
@@ -27,8 +28,8 @@ public class UrlShortenerController {
         this.urlShortenerService = urlShortenerService;
     }
 
-    @Tag(name = "GET", description = "GET methods of the APIs.")
-    @Operation(summary = "Get a short URL", description = "Method to get a url mapped to actual urly.")
+    @Tag(name = "POST", description = "Post methods of the APIs.")
+    @Operation(summary = "Get a short URL", description = "Method to get a url mapped to actual url.")
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
@@ -65,5 +66,46 @@ public class UrlShortenerController {
                         .shortUrl(key)
                         .build()
         );
+    }
+
+
+    @Tag(name = "GET", description = "Get methods of the APIs.")
+    @Operation(summary = "Redirect to actual URL", description = "Method to redirect the user to the actual URL.")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "301",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json"
+                            )
+                    }),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found.",
+                    content = {
+                            @Content (
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ErrorResponse.class)
+                            )
+                    }),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Something goes wrong.",
+                    content = {
+                            @Content (
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ErrorResponse.class)
+                            )
+                    })
+    })@GetMapping("/{shortUrl}")
+    public ResponseEntity<URI> redirect(
+            @PathVariable String shortUrl
+    ) throws UrlShortenerServiceException {
+        String actualUrl = urlShortenerService.getActualUrl(shortUrl);
+        URI uri = URI.create(actualUrl);
+        return ResponseEntity
+                .status(HttpStatus.MOVED_PERMANENTLY)
+                .location(uri)
+                .build();
     }
 }

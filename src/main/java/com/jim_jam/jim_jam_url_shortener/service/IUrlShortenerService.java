@@ -14,4 +14,12 @@ public interface IUrlShortenerService {
      * @throws UrlShortenerServiceException when something goes wrong while getting a short URL
      */
     String getShortUrl(GetShortUrlRequest shortUrlRequestBody) throws UrlShortenerServiceException;
+
+    /**
+     * Method to get the mapped url
+     * @param shortUrlId key to which actual url is mapped
+     * @return {@link String} actual url
+     * @throws UrlShortenerServiceException when something goes wrong while getting actual url
+     */
+    String getActualUrl(String shortUrlId) throws UrlShortenerServiceException;
 }
