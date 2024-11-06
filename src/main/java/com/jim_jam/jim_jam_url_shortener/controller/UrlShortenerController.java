@@ -104,7 +104,7 @@ public class UrlShortenerController {
         String actualUrl = urlShortenerService.getActualUrl(shortUrl);
         URI uri = URI.create(actualUrl);
         return ResponseEntity
-                .status(HttpStatus.MOVED_PERMANENTLY)
+                .status(HttpStatus.TEMPORARY_REDIRECT)
                 .location(uri)
                 .build();
     }
