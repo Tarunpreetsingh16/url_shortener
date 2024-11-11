@@ -10,7 +10,8 @@
 URL Shortener service provides the capability to get a short url for an actual URL, and also helps in redirecting to the actual url. 
 
 ## Components in this service
-![Components](https://github.com/user-attachments/assets/f9f1151f-c62d-400d-8def-8bcf3c7c6a1a)
+![Components](https://github.com/user-attachments/assets/e9a67c71-71e9-4fc1-b683-69a4d0200534)
+
 
 ## Flow Diagram 
 ![Flow diagram](https://github.com/Tarunpreetsingh16/key-generation-service/blob/develop/documentation/images/Flow-Diagram.jpeg)
