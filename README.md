@@ -16,9 +16,9 @@ URL Shortener service provides the capability to get a short url for an actual U
 
 ## Flow Diagram 
 - Generate a short URL -
-  ![url_shortener_service_flow_generate_short_urljpg](https://github.com/user-attachments/assets/6c831ad1-e96a-4ae5-bb5f-41b6dd665e88)
 
-- Redirect to actual URL -
+![url_shortener_service_flow_generate_short_urljpg](https://github.com/user-attachments/assets/6c831ad1-e96a-4ae5-bb5f-41b6dd665e88)
+
   
    
 ![Flow diagram](https://github.com/Tarunpreetsingh16/key-generation-service/blob/develop/documentation/images/Flow-Diagram.jpeg)
