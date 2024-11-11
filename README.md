@@ -31,5 +31,6 @@ URL Shortener service provides the capability to get a short url for an actual U
 [Swagger docs](https://url-shortener-5etj.onrender.com/swagger-ui/index.html)
 
 ## URL to the service
-[GET a random key](https://url-shortener-5etj.onrender.com/)
+- [POST - Generate a short URL](https://url-shortener-5etj.onrender.com/)
+- [GET - Redirect to an actual URL](https://url-shortener-5etj.onrender.com/)
 
