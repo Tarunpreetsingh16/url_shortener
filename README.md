@@ -5,7 +5,8 @@
 3. [Flow Diagram](#Flow-Diagram)
 4. [Swagger docs to the service](#Swagger-docs-to-the-service)
 5. [URL to the service](#URL-to-the-service)
-
+6. Other links
+   
 ## Description
 URL Shortener service provides the capability to get a short url for an actual URL, and also helps in redirecting to the actual url. 
 
@@ -33,4 +34,8 @@ URL Shortener service provides the capability to get a short url for an actual U
 ## URL to the service
 - [POST - Generate a short URL](https://url-shortener-5etj.onrender.com/)
 - [GET - Redirect to an actual URL](https://url-shortener-5etj.onrender.com/)
+
+## Other links
+- [Key generation service](https://github.com/Tarunpreetsingh16/key-generation-service/tree/develop)
+- [URL shortener site](https://github.com/Tarunpreetsingh16/url-shortener-site)
 
