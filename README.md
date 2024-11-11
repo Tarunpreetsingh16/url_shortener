@@ -1,17 +1,16 @@
 ### URL Shortener Service
 ## Table of contents -
 1. [Description](#description)
-2. [Need of the service](#Need-of-the-service)
-3. [Components in this service](#Components-in-this-service)
-4. [Flow Diagram](#Flow-Diagram)
-5. [Swagger docs to the service](#Swagger-docs-to-the-service)
-6. [URL to the service](#URL-to-the-service)
+2. [Components in this service](#Components-in-this-service)
+3. [Flow Diagram](#Flow-Diagram)
+4. [Swagger docs to the service](#Swagger-docs-to-the-service)
+5. [URL to the service](#URL-to-the-service)
 
 ## Description
 URL Shortener service provides the capability to get a short url for an actual URL, and also helps in redirecting to the actual url. 
 
 ## Components in this service
-![component diagram](https://github.com/Tarunpreetsingh16/key-generation-service/blob/develop/documentation/images/component_diagram.jpeg)
+![Components](https://github.com/user-attachments/assets/f9f1151f-c62d-400d-8def-8bcf3c7c6a1a)
 
 ## Flow Diagram 
 ![Flow diagram](https://github.com/Tarunpreetsingh16/key-generation-service/blob/develop/documentation/images/Flow-Diagram.jpeg)
